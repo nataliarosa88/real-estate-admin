@@ -50,6 +50,23 @@
     </div>
 
     <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>Telefone: *</label>
+          <input type="text" class="form-control"
+                  [(ngModel)]="proprietario.telefone" name="telefone" />
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>E-mail: *</label>
+          <input type="text" class="form-control"
+          [(ngModel)]="proprietario.email" name="email"/>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
       <div class="col-md-3">
         <button type="submit" class="btn btn-success" *ngIf="!proprietario.id">
           <i class="fa fa-save"></i> Salvar
