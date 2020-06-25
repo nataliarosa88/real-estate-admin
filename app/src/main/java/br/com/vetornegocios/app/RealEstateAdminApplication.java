@@ -6,14 +6,14 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 
 @SpringBootApplication
-public class RealStateAdminApplication extends SpringBootServletInitializer {
+public class RealEstateAdminApplication extends SpringBootServletInitializer {
 
     public static void main(String[] args) {
-        SpringApplication.run(RealStateAdminApplication.class, args);
+        SpringApplication.run(RealEstateAdminApplication.class, args);
     }
 
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
-        return builder.sources(RealStateAdminApplication.class);
+        return builder.sources(RealEstateAdminApplication.class);
     }
 }
