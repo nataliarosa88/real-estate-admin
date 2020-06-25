@@ -32,6 +32,7 @@ public class Cliente {
     @CPF(message = "{campo.cpf.invalido}")
     private String cpf;
 
+    @Column(nullable = false, length = 50)
     private String telefone;
 
     @Column(name = "data_cadastro", updatable = false)

@@ -26,7 +26,7 @@ public class Imovel {
     @NotEmpty(message = "{campo.titulo.obrigatorio}")
     private String titulo;
 
-    @Column(nullable = false, length = 11)
+    @Column(nullable = false, length = 150)
     @NotNull(message = "{campo.descricao.obrigatorio}")
     private String descricao;
 
