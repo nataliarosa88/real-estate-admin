@@ -60,6 +60,8 @@ public class ImovelController {
                 .map( imovel -> {
                     imovel.setTitulo(imovelAtualizado.getTitulo());
                     imovel.setDescricao(imovelAtualizado.getDescricao());
+                    imovel.setDormitorio(imovelAtualizado.getDormitorio());
+                    imovel.setTamanho(imovelAtualizado.getTamanho());
                     return repository.save(imovel);
                 })
                 .orElseThrow( () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Imovel não encontrado") );

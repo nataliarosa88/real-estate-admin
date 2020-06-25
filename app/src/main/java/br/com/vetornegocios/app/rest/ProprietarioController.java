@@ -59,7 +59,9 @@ public class ProprietarioController {
                 .findById(id)
                 .map( proprietario -> {
                     proprietario.setNome(proprietarioAtualizado.getNome());
-                    proprietario.setCpf(proprietarioAtualizado.getCpf());
+                    proprietario.setEmail(proprietarioAtualizado.getEmail());
+                    proprietario.setTelefone(proprietarioAtualizado.getTelefone());
+                    proprietario.setCelular(proprietarioAtualizado.getCelular());
                     return repository.save(proprietario);
                 })
                 .orElseThrow( () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Proprietario não encontrado") );
