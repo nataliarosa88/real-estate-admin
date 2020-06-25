@@ -1,5 +1,9 @@
 ```
-ng build --base-href /frontend --deploy-url /frontend/ --prod
+ng build --base-href /real-estate-admin --deploy-url /real-estate-admin/ --prod
+```
+
+```
+systemctl daemon-reload && systemctl stop nginx && systemctl start nginx && systemctl status nginx
 ```
 
 
