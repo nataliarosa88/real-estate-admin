@@ -26,9 +26,17 @@ public class Imovel {
     @NotEmpty(message = "{campo.titulo.obrigatorio}")
     private String titulo;
 
-    @Column(nullable = false, length = 150)
+    @Column(nullable = false, length = 254)
     @NotNull(message = "{campo.descricao.obrigatorio}")
     private String descricao;
+
+    @Column(nullable = false, length = 254)
+    @NotNull(message = "{campo.dormitorios.obrigatorio}")
+    private String dormitorio;
+
+    @Column(nullable = false, length = 254)
+    @NotNull(message = "{campo.tamanho.obrigatorio}")
+    private String tamanho;
 
     @Column(name = "data_cadastro", updatable = false)
     @JsonFormat(pattern = "dd/MM/yyyy")
