@@ -1,7 +1,23 @@
 @charset "UTF-8";
+
+
+
 td.fixo {
   width:25%!important;
 }
+
+.rolagem {
+  height: 300px;
+  overflow-y: scroll;
+}
+
+
+
+
+
+
+
+
 :root {
   --blue: #007bff;
   --indigo: #6610f2;

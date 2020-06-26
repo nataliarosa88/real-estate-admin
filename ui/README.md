@@ -102,4 +102,6 @@ ng g s clientesService
 
 ```
 https://backefront.com.br/filtro-tabela-angular/
+
+https://gist.github.com/rxaviers/7360908
 ```
