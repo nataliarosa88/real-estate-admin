@@ -44,9 +44,9 @@
         <tbody>
           <tr *ngFor="let cliente of clientes | filter:filter; let i = index">
             <td>{{ cliente.id }}</td>
-            <td>{{ cliente.nome }}</td>
+            <td class="fixo">{{ cliente.nome }}</td>
             <td>{{ cliente.telefone }}</td>
-            <td>{{ cliente.email }}</td>
+            <td class="fixo">{{ cliente.email }}</td>
             <td>{{ cliente.celular }}</td>
             <td>{{ cliente.dataCadastro }}</td>
             <td>

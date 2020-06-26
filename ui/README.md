@@ -99,3 +99,7 @@ ng g s clientesService
 ```
  ng g c clientes/clientesLista
 ```
+
+```
+https://backefront.com.br/filtro-tabela-angular/
+```

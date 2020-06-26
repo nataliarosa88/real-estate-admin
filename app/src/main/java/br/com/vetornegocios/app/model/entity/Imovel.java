@@ -27,11 +27,9 @@ public class Imovel {
     private String titulo;
 
     @Column(length = 254)
-    @NotNull(message = "{campo.descricao.obrigatorio}")
     private String descricao;
 
     @Column(length = 254)
-    @NotNull(message = "{campo.tamanho.obrigatorio}")
     private String tamanho;
 
     @Column(name = "data_cadastro", updatable = false)

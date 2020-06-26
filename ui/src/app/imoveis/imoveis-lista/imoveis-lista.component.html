@@ -43,8 +43,8 @@
         <tbody>
           <tr *ngFor="let imovel of imoveis | filter:filter; let i = index">
             <td>{{ imovel.id }}</td>
-            <td>{{ imovel.titulo }}</td>
-            <td>{{ imovel.descricao }}</td>
+            <td class="fixo">{{ imovel.titulo }}</td>
+            <td class="fixo">{{ imovel.descricao }}</td>
             <td>{{ imovel.tamanho }}</td>
             <td>{{ imovel.dataCadastro }}</td>
             <td>
