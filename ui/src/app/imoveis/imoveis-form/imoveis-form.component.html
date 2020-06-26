@@ -42,9 +42,68 @@
       </div>
       <div class="col-md-6">
         <div class="form-group">
-          <label>Descrição: *</label>
+          <label>Descrição: </label>
           <input type="text" class="form-control"
           [(ngModel)]="imovel.descricao" name="descricao"/>
+        </div>
+      </div>
+    </div>
+
+    <ol class="breadcrumb mb-4">
+      <li class="breadcrumb-item active">Informações financeiras</li>
+    </ol>
+
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>Preço: </label>
+          <input type="text" class="form-control"
+                  [(ngModel)]="imovel.preco" name="preco" />
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>Comissão: </label>
+          <input type="text" class="form-control"
+                  [(ngModel)]="imovel.comissao" name="comissao" />
+        </div>
+      </div>
+    </div>
+
+    <ol class="breadcrumb mb-4">
+      <li class="breadcrumb-item active">Informações do imóvel</li>
+    </ol>
+
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>Dormitórios: </label>
+          <input type="text" class="form-control"
+                  [(ngModel)]="imovel.dormitorios" name="dormitorios" />
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>Suítes: </label>
+          <input type="text" class="form-control"
+                  [(ngModel)]="imovel.suites" name="suites" />
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>Quintal: </label>
+          <input type="text" class="form-control"
+                  [(ngModel)]="imovel.quintal" name="quintal" />
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>Frente: </label>
+          <input type="text" class="form-control"
+                  [(ngModel)]="imovel.frente" name="frente" />
         </div>
       </div>
     </div>
@@ -57,11 +116,61 @@
                   [(ngModel)]="imovel.tamanho" name="tamanho" />
         </div>
       </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>Extra: </label>
+          <input type="text" class="form-control"
+                  [(ngModel)]="imovel.extra" name="extra" />
+        </div>
+      </div>
+    </div>
 
+    <ol class="breadcrumb mb-4">
+      <li class="breadcrumb-item active">Endereço</li>
+    </ol>
 
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>Rua: </label>
+          <input type="text" class="form-control"
+                  [(ngModel)]="imovel.endereco.rua" name="rua" />
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>Número: </label>
+          <input type="text" class="form-control"
+                  [(ngModel)]="imovel.endereco.numero" name="numero" />
+        </div>
+      </div>
+    </div>
 
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>Bairro: </label>
+          <input type="text" class="form-control"
+                  [(ngModel)]="imovel.endereco.bairro" name="bairro" />
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>Cidade: </label>
+          <input type="text" class="form-control"
+                  [(ngModel)]="imovel.endereco.cidade" name="cidade" />
+        </div>
+      </div>
+    </div>
 
-
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>Cep: </label>
+          <input type="text" class="form-control"
+                  [(ngModel)]="imovel.endereco.cep" name="cep" />
+        </div>
+      </div>
     </div>
 
     <div class="row">

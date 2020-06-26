@@ -48,7 +48,19 @@
             <td>{{ imovel.tamanho }}</td>
             <td>{{ imovel.dataCadastro }}</td>
             <td>
-              <button class="btn btn-primary"
+
+
+              <button class="btn btn-info ml-1"
+              data-toggle="modal" data-target="#modalDados" (click)="preparaDelecao(imovel)">
+              <i class="fa fa-address-card"></i>
+            </button>
+
+              <button class="btn btn-info ml-1"
+              data-toggle="modal" data-target="#modalEndereco" (click)="preparaDelecao(imovel)">
+              <i class="fa fa-map-marker-alt"></i>
+            </button>
+
+              <button class="btn btn-primary ml-1"
               routerLink="/imoveis-form/{{ imovel.id }}">
               <i class="fa fa-edit"></i>
             </button>
@@ -82,4 +94,80 @@
     </div>
   </div>
 </div>
+
+<div id="modalDados" class="modal fase" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div><h4>Endereço</h4></div>
+        <div><button class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i></button></div>
+      </div>
+      <div class="modal-body" *ngIf="imovelSelecionado">
+        <div class="rolagem">
+          <h3><b>{{ imovelSelecionado.titulo }}</b></h3>
+          <p>Preço: {{ imovelSelecionado.preco }}</p>
+          <p>Comissão: {{ imovelSelecionado.comissao }}</p>
+          <p>Dormitórios: {{ imovelSelecionado.dormitorios }}</p>
+          <p>Suítes: {{ imovelSelecionado.suites }}</p>
+          <p>Quintal: {{ imovelSelecionado.quintal }}</p>
+          <p>Frente: {{ imovelSelecionado.frente }}</p>
+          <p>Tamanho: {{ imovelSelecionado.tamanho }}</p>
+          <p>Extra: {{ imovelSelecionado.extra }}</p>
+      </div>
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="modalEndereco" class="modal fase" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div><h4>Consulta</h4></div>
+        <div><button class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i></button></div>
+      </div>
+      <div class="modal-body" *ngIf="imovelSelecionado">
+        <div class="rolagem">
+          <h3><b>{{ imovelSelecionado.titulo }}</b></h3>
+          <p>Rua: {{ imovelSelecionado.endereco.rua }}</p>
+          <p>Numero: {{ imovelSelecionado.endereco.numero }}</p>
+          <p>Bairro: {{ imovelSelecionado.endereco.bairro }}</p>
+          <p>Cidade: {{ imovelSelecionado.endereco.cidade }}</p>
+          <p>Cep: {{ imovelSelecionado.endereco.cep }}</p>
+          <p>Data de Cadastro: {{ imovelSelecionado.endereco.dataCadastro }}</p>
+      </div>
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div id="modalConsulta" class="modal fase" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div><h4>Dados</h4></div>
+        <div><button class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i></button></div>
+      </div>
+      <div class="modal-body" *ngIf="imovelSelecionado">
+        <div class="rolagem">
+          <h3><b>{{ imovelSelecionado.titulo }}</b></h3>
+          <p>Rua: {{ imovelSelecionado.endereco.rua }}</p>
+          <p>Numero: {{ imovelSelecionado.endereco.numero }}</p>
+          <p>Bairro: {{ imovelSelecionado.endereco.bairro }}</p>
+          <p>Cidade: {{ imovelSelecionado.endereco.cidade }}</p>
+          <p>Cep: {{ imovelSelecionado.endereco.cep }}</p>
+          <p>Data de Cadastro: {{ imovelSelecionado.endereco.dataCadastro }}</p>
+      </div>
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+  </div>
+</div>
+
 </div>

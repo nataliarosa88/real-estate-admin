@@ -3,6 +3,7 @@ import { Imovel } from '../imovel'
 import { ImoveisService } from '../../imoveis.service';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Observable } from 'rxjs';
+import { Endereco } from 'src/app/shared/endereco';
 
 
 @Component({
