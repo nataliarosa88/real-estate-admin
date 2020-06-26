@@ -1,7 +1,7 @@
 export class Proprietario {
   id: number;
   nome: string;
-  cpf: string;
+  celular: string;
   email: string;
   telefone: string;
   dataCadastro: string;
