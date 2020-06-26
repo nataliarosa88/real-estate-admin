@@ -66,6 +66,7 @@ public class ClienteController {
                     cliente.setNome(clienteAtualizado.getNome());
                     cliente.setEmail(clienteAtualizado.getEmail());
                     cliente.setTelefone(clienteAtualizado.getTelefone());
+                    cliente.setCelular(clienteAtualizado.getCelular());
                     return repository.save(cliente);
                 })
                 .orElseThrow( () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Cliente não encontrado") );

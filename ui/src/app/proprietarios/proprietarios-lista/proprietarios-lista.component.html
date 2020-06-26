@@ -1,6 +1,6 @@
 <h1 class="mt-4">Proprietarios</h1>
 <ol class="breadcrumb mb-4">
-    <li class="breadcrumb-item active">Consulta</li>
+  <li class="breadcrumb-item active">Consulta</li>
 </ol>
 <div class="container">
 
@@ -23,6 +23,10 @@
     </div>
   </div>
   <br />
+  <nav class="navbar">
+    <input class="form-control" type="text" name="search" [(ngModel)]="filter">
+  </nav>
+  <br />
   <div class="row">
     <div class="col-md-12">
       <table class="table table-condensed table-hover">
@@ -38,46 +42,46 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let proprietario of proprietarios">
+          <tr *ngFor="let proprietario of proprietarios | filter:filter; let i = index">
             <td>{{ proprietario.id }}</td>
             <td>{{ proprietario.nome }}</td>
-            <td>{{ proprietario.celular }}</td>
             <td>{{ proprietario.telefone }}</td>
             <td>{{ proprietario.email }}</td>
+            <td>{{ proprietario.celular }}</td>
             <td>{{ proprietario.dataCadastro }}</td>
             <td>
               <button class="btn btn-primary"
-                      routerLink="/proprietarios-form/{{ proprietario.id }}">
-                <i class="fa fa-edit"></i>
-              </button>
+              routerLink="/proprietarios-form/{{ proprietario.id }}">
+              <i class="fa fa-edit"></i>
+            </button>
 
-               <button class="btn btn-danger ml-1"
-                       data-toggle="modal" data-target="#modalDelecao" (click)="preparaDelecao(proprietario)">
-                <i class="fa fa-trash"></i>
-              </button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
+            <button class="btn btn-danger ml-1"
+            data-toggle="modal" data-target="#modalDelecao" (click)="preparaDelecao(proprietario)">
+            <i class="fa fa-trash"></i>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</div>
 
-  <div id="modalDelecao" class="modal fase" role="dialog">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-            <h4>Confirmação</h4>
-        </div>
-        <div class="modal-body" *ngIf="proprietarioSelecionado">
-           Confirma a deleção do(a) proprietario <b>{{ proprietarioSelecionado.nome }}</b>?
-        </div>
+<div id="modalDelecao" class="modal fase" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4>Confirmação</h4>
+      </div>
+      <div class="modal-body" *ngIf="proprietarioSelecionado">
+        Confirma a deleção do(a) proprietario <b>{{ proprietarioSelecionado.nome }}</b>?
+      </div>
 
-        <div class="modal-footer">
-          <button class="btn btn-danger" (click)="deletarProprietario()"
-                  data-dismiss="modal">Confirmar</button>
-          <button class="btn btn-default" data-dismiss="modal">Cancela</button>
-        </div>
+      <div class="modal-footer">
+        <button class="btn btn-danger" (click)="deletarProprietario()"
+        data-dismiss="modal">Confirmar</button>
+        <button class="btn btn-default" data-dismiss="modal">Cancela</button>
       </div>
     </div>
   </div>
+</div>
 </div>

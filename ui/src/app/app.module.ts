@@ -12,6 +12,7 @@ import { ImoveisModule } from './imoveis/imoveis.module';
 import { ImoveisService } from './imoveis.service';
 import { ProprietariosModule } from './proprietarios/proprietarios.module';
 import { ProprietariosService } from './proprietarios.service';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { ProprietariosService } from './proprietarios.service';
     ProprietariosModule,
     ImoveisModule,
     ClientesModule,
-    HttpClientModule
+    HttpClientModule,
+    Ng2SearchPipeModule
   ],
   providers: [
     ClientesService,

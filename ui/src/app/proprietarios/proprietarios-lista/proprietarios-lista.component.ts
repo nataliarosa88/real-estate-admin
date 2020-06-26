@@ -14,6 +14,7 @@ export class ProprietariosListaComponent implements OnInit {
   proprietarioSelecionado: Proprietario;
   mensagemSucesso: string;
   mensagemErro: string;
+  filter:string;
   constructor(
     private service: ProprietariosService,
      private router: Router) { }

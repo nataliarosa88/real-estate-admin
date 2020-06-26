@@ -14,6 +14,7 @@ export class ImoveisListaComponent implements OnInit {
   imovelSelecionado: Imovel;
   mensagemSucesso: string;
   mensagemErro: string;
+  filter:string;
   constructor(
     private service: ImoveisService,
      private router: Router) { }

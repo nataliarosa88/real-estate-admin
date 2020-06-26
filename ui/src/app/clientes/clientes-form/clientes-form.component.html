@@ -42,9 +42,26 @@
       </div>
       <div class="col-md-6">
         <div class="form-group">
-          <label>CPF: *</label>
+          <label>Telefone: </label>
           <input type="text" class="form-control"
-          [(ngModel)]="cliente.cpf" name="cpf"/>
+          [(ngModel)]="cliente.telefone" name="telefone"/>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>Email: </label>
+          <input type="text" class="form-control"
+                  [(ngModel)]="cliente.email" name="email" />
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>Celular: </label>
+          <input type="text" class="form-control"
+          [(ngModel)]="cliente.celular" name="celular"/>
         </div>
       </div>
     </div>

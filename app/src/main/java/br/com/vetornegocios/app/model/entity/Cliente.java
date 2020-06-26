@@ -26,12 +26,14 @@ public class Cliente {
     @NotEmpty(message = "{campo.nome.obrigatorio}")
     private String nome;
 
-    @Column(nullable = false, length = 200)
-    @NotNull(message = "{campo.email.obrigatorio}")
-    private String email;
+    @Column(length = 200)
+     private String email;
 
-    @Column(nullable = false, length = 11)
+    @Column(length = 11)
     private String telefone;
+
+    @Column(length = 11)
+    private String celular;
 
     @Column(name = "data_cadastro", updatable = false)
     @JsonFormat(pattern = "dd/MM/yyyy")

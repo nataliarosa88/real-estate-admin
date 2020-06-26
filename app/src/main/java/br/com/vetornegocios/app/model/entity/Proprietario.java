@@ -25,13 +25,13 @@ public class Proprietario {
     @NotEmpty(message = "{campo.nome.obrigatorio}")
     private String nome;
 
-    @Column(nullable = false, length = 254)
+    @Column(length = 254)
     private String email;
 
-    @Column(nullable = false, length = 11)
+    @Column(length = 11)
     private String telefone;
 
-    @Column(nullable = false, length = 11)
+    @Column(length = 11)
     private String celular;
 
     @Column(name = "data_cadastro", updatable = false)

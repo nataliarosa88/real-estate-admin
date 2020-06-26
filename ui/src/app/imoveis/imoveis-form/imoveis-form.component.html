@@ -50,6 +50,21 @@
     </div>
 
     <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>Tamanho: </label>
+          <input type="text" class="form-control"
+                  [(ngModel)]="imovel.tamanho" name="tamanho" />
+        </div>
+      </div>
+
+
+
+
+
+    </div>
+
+    <div class="row">
       <div class="col-md-3">
         <button type="submit" class="btn btn-success" *ngIf="!imovel.id">
           <i class="fa fa-save"></i> Salvar

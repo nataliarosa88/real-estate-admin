@@ -23,6 +23,10 @@
     </div>
   </div>
   <br />
+  <nav class="navbar">
+    <input class="form-control" type="text" name="search" [(ngModel)]="filter">
+  </nav>
+  <br />
   <div class="row">
     <div class="col-md-12">
       <table class="table table-condensed table-hover">
@@ -30,16 +34,20 @@
           <tr>
             <th>ID</th>
             <th>Nome</th>
-            <th>CPF</th>
+            <th>Telefone</th>
+            <th>Email</th>
+            <th>Celular</th>
             <th>Data Cadastro</th>
             <th></th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let cliente of clientes">
+          <tr *ngFor="let cliente of clientes | filter:filter; let i = index">
             <td>{{ cliente.id }}</td>
             <td>{{ cliente.nome }}</td>
-            <td>{{ cliente.cpf }}</td>
+            <td>{{ cliente.telefone }}</td>
+            <td>{{ cliente.email }}</td>
+            <td>{{ cliente.celular }}</td>
             <td>{{ cliente.dataCadastro }}</td>
             <td>
               <button class="btn btn-primary"
