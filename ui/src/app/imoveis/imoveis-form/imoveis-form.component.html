@@ -70,6 +70,16 @@
       </div>
     </div>
 
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>Condomínio: </label>
+          <input type="text" class="form-control"
+                  [(ngModel)]="imovel.condominio" name="condominio" />
+        </div>
+      </div>
+    </div>
+
     <ol class="breadcrumb mb-4">
       <li class="breadcrumb-item active">Informações do imóvel</li>
     </ol>
@@ -87,6 +97,16 @@
           <label>Suítes: </label>
           <input type="text" class="form-control"
                   [(ngModel)]="imovel.suites" name="suites" />
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>Banheiros: </label>
+          <input type="text" class="form-control"
+                  [(ngModel)]="imovel.banheiros" name="banheiros" />
         </div>
       </div>
     </div>

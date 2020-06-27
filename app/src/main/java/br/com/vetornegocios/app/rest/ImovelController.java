@@ -66,8 +66,10 @@ public class ImovelController {
                     imovel.setDescricao(imovelAtualizado.getDescricao());
                     imovel.setPreco(imovelAtualizado.getPreco());
                     imovel.setComissao(imovelAtualizado.getComissao());
+                    imovel.setCondominio(imovelAtualizado.getCondominio());
                     imovel.setDormitorios(imovelAtualizado.getDormitorios());
                     imovel.setSuites(imovelAtualizado.getSuites());
+                    imovel.setBanheiros(imovelAtualizado.getBanheiros());
                     imovel.setQuintal(imovelAtualizado.getQuintal());
                     imovel.setFrente(imovelAtualizado.getFrente());
                     imovel.setTamanho(imovelAtualizado.getTamanho());

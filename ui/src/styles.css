@@ -1,6 +1,8 @@
 @charset "UTF-8";
 
-
+td.icon {
+  width:20px!important;
+}
 
 td.fixo {
   width:25%!important;
@@ -11,12 +13,17 @@ td.fixo {
   overflow-y: scroll;
 }
 
+@media only screen and (max-width: 500px) {
+  td.full {
+     display: none!important;
+   }
+}
 
-
-
-
-
-
+@media only screen and (max-width: 500px) {
+  th.full {
+     display: none!important;
+   }
+}
 
 :root {
   --blue: #007bff;

@@ -3,8 +3,6 @@ import { Imovel } from '../imovel'
 import { ImoveisService } from '../../imoveis.service';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Observable } from 'rxjs';
-import { Endereco } from 'src/app/shared/endereco';
-
 
 @Component({
   selector: 'app-imoveis-form',
@@ -14,6 +12,7 @@ import { Endereco } from 'src/app/shared/endereco';
 export class ImoveisFormComponent implements OnInit {
 
   imovel: Imovel;
+  proprietarios: [];
   success: boolean = false;
   errors: String[];
   id: number;

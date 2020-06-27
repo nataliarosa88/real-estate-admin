@@ -3,6 +3,18 @@ ng build --base-href /real-estate-admin --deploy-url /real-estate-admin/ --prod
 
 npm i ng2-search-filter --save
 
+
+.fab {
+  display: inline;
+}
+
+@media only screen and (max-width: 300px) {
+  .fab {
+     display: none;
+   }
+}
+
+
 ```
 
 ```

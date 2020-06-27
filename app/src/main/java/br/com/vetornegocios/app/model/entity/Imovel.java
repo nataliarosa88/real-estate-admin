@@ -2,6 +2,7 @@ package br.com.vetornegocios.app.model.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -34,10 +35,16 @@ public class Imovel {
     private String preco;
 
     @Column(length = 254)
+    private String condominio;
+
+    @Column(length = 254)
     private String comissao;
 
     @Column(length = 254)
     private String dormitorios;
+
+    @Column(length = 254)
+    private String banheiros;
 
     @Column(length = 254)
     private String suites;
@@ -61,6 +68,10 @@ public class Imovel {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="endereco_id", referencedColumnName = "id")
     private Endereco endereco;
+
+    @OneToOne
+    @JoinColumn(name = "proprietario_id")
+    private Proprietario proprietario;
 
     @PrePersist
     public void prePersist(){

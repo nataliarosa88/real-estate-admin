@@ -6,7 +6,9 @@ export class Imovel {
   descricao: string;
   preco:string;
   comissao:string;
+  condominio:string;
   dormitorios:string;
+  banheiros:string;
   suites:string;
   quintal:string;
   frente:string;
