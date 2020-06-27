@@ -1,4 +1,5 @@
 import { Endereco } from '../shared/endereco';
+import { Proprietario } from '../proprietarios/proprietario';
 
 export class Imovel {
   id: number;
@@ -16,4 +17,5 @@ export class Imovel {
   extra:string;
   dataCadastro: string;
   endereco = new Endereco();
+  proprietario = new Proprietario();
 }

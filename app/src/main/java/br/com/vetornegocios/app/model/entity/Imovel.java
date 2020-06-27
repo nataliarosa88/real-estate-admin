@@ -69,7 +69,7 @@ public class Imovel {
     @JoinColumn(name="endereco_id", referencedColumnName = "id")
     private Endereco endereco;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "proprietario_id")
     private Proprietario proprietario;
 

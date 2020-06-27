@@ -5,7 +5,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { ImoveisRoutingModule } from './imoveis-routing.module';
 import { ImoveisFormComponent } from './imoveis-form/imoveis-form.component';
 import { ImoveisListaComponent } from './imoveis-lista/imoveis-lista.component';
-
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [ImoveisFormComponent, ImoveisListaComponent],
@@ -13,9 +13,11 @@ import { ImoveisListaComponent } from './imoveis-lista/imoveis-lista.component';
     CommonModule,
     ImoveisRoutingModule,
     FormsModule,
+    RouterModule,
     Ng2SearchPipeModule
   ], exports: [
-    ImoveisFormComponent
+    ImoveisFormComponent,
+    ImoveisListaComponent
   ]
 })
 export class ImoveisModule {

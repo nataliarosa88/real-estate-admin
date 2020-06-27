@@ -3,6 +3,8 @@ import { Imovel } from '../imovel'
 import { ImoveisService } from '../../imoveis.service';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Observable } from 'rxjs';
+import { Proprietario } from '../../proprietarios/proprietario';
+import { ProprietariosService } from '../../proprietarios.service';
 
 @Component({
   selector: 'app-imoveis-form',
@@ -12,19 +14,24 @@ import { Observable } from 'rxjs';
 export class ImoveisFormComponent implements OnInit {
 
   imovel: Imovel;
-  proprietarios: [];
+  proprietarios: Proprietario[] = [];
   success: boolean = false;
   errors: String[];
   id: number;
   constructor(
       private service : ImoveisService,
       private router : Router,
+      private proprietariosService: ProprietariosService,
       private activatedRoute: ActivatedRoute
       ) {
-    this.imovel = new Imovel();
-   }
+          this.imovel = new Imovel();
+        }
 
   ngOnInit(): void {
+    this.proprietariosService
+    .getProprietarios()
+    .subscribe(
+      response => this.proprietarios = response );
     let params : Observable<Params> = this.activatedRoute.params
     params.subscribe( urlParams => {
       this.id = urlParams['id']
@@ -44,11 +51,13 @@ export class ImoveisFormComponent implements OnInit {
   }
 
   onSubmit(){
+
     if( this.id ) {
 
       this.service
         .atualizar(this.imovel)
         .subscribe(response => {
+          console.log(response);
           this.success =true;
           this.errors = null;
         }, errorResponse => {
@@ -63,6 +72,7 @@ export class ImoveisFormComponent implements OnInit {
           this.success = true;
           this.errors = null;
           this.imovel = response;
+          console.log(response);
         } , errorResponse => {
             this.errors = errorResponse.error.errors;
         }

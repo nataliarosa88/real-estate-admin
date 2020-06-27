@@ -78,6 +78,20 @@
                   [(ngModel)]="imovel.condominio" name="condominio" />
         </div>
       </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>Proprietário: </label>
+          <select class="form-control"
+                  [ngModelOptions]="{standalone: true}"
+                  [(ngModel)]="imovel.proprietario.id">
+            <option value="">Selecione ...</option>
+            <option *ngFor="let proprietario of proprietarios"
+                    [ngValue]="proprietario.id">
+              {{ proprietario.nome }}
+            </option>
+          </select>
+        </div>
+      </div>
     </div>
 
     <ol class="breadcrumb mb-4">

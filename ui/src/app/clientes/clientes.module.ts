@@ -5,7 +5,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { ClientesRoutingModule } from './clientes-routing.module';
 import { ClientesFormComponent } from './clientes-form/clientes-form.component';
 import { ClientesListaComponent } from './clientes-lista/clientes-lista.component';
-
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [ClientesFormComponent, ClientesListaComponent],
@@ -13,9 +13,11 @@ import { ClientesListaComponent } from './clientes-lista/clientes-lista.componen
     CommonModule,
     ClientesRoutingModule,
     FormsModule,
+    RouterModule,
     Ng2SearchPipeModule
   ], exports: [
-    ClientesFormComponent
+    ClientesFormComponent,
+    ClientesListaComponent
   ]
 })
 export class ClientesModule {

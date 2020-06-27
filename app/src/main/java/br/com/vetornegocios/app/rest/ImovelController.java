@@ -1,9 +1,12 @@
 package br.com.vetornegocios.app.rest;
 
 import br.com.vetornegocios.app.model.entity.Imovel;
+import br.com.vetornegocios.app.model.entity.Proprietario;
 import br.com.vetornegocios.app.model.repository.EnderecoRepository;
 import br.com.vetornegocios.app.model.repository.ImovelRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import br.com.vetornegocios.app.model.repository.ProprietarioRepository;
+import br.com.vetornegocios.app.rest.dto.ImovelDTO;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
@@ -13,17 +16,14 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/imoveis")
+@RequiredArgsConstructor
 public class ImovelController {
 
     private final ImovelRepository imovelRepository;
 
     private final EnderecoRepository enderecoRepository;
 
-    @Autowired
-    public ImovelController( ImovelRepository imovelRepository, EnderecoRepository enderecoRepository ) {
-        this.imovelRepository = imovelRepository;
-        this.enderecoRepository = enderecoRepository;
-    }
+    private final ProprietarioRepository proprietarioRepository;
 
     @GetMapping
     public List<Imovel> obterTodos(){
@@ -32,8 +32,33 @@ public class ImovelController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Imovel salvar( @RequestBody @Valid Imovel imovel ){
-        return imovelRepository.save(imovel);
+    public Imovel salvar(@RequestBody @Valid ImovelDTO dto){
+
+        Integer proprietarioId = dto.getProprietario().getId();
+
+        Proprietario proprietario = proprietarioRepository
+                        .findById(proprietarioId)
+                        .orElseThrow(() ->
+                                new ResponseStatusException(
+                                        HttpStatus.BAD_REQUEST, "Cliente inexistente"));
+
+        return imovelRepository.save( Imovel.builder()
+                .banheiros(dto.getBanheiros())
+                .comissao(dto.getComissao())
+                .condominio(dto.getCondominio())
+                .descricao(dto.getDescricao())
+                .dormitorios(dto.getDormitorios())
+                .endereco(dto.getEndereco())
+                .extra(dto.getExtra())
+                .frente(dto.getFrente())
+                .preco(dto.getPreco())
+                .quintal(dto.getQuintal())
+                .suites(dto.getSuites())
+                .tamanho(dto.getTamanho())
+                .titulo(dto.getTitulo())
+                .proprietario(proprietario)
+                .dataCadastro(dto.getDataCadastro())
+                .build());
     }
 
     @GetMapping("{id}")
@@ -67,6 +92,7 @@ public class ImovelController {
                     imovel.setPreco(imovelAtualizado.getPreco());
                     imovel.setComissao(imovelAtualizado.getComissao());
                     imovel.setCondominio(imovelAtualizado.getCondominio());
+                    imovel.setProprietario(imovelAtualizado.getProprietario());
                     imovel.setDormitorios(imovelAtualizado.getDormitorios());
                     imovel.setSuites(imovelAtualizado.getSuites());
                     imovel.setBanheiros(imovelAtualizado.getBanheiros());
@@ -89,6 +115,5 @@ public class ImovelController {
                     return enderecoRepository.save(endereco);
                 })
                 .orElseThrow( () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Endereço não encontrado") );
-
     }
 }

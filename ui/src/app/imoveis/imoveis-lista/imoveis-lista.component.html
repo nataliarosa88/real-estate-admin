@@ -1,6 +1,6 @@
 <h1 class="mt-4">Imoveis</h1>
 <ol class="breadcrumb mb-4">
-	<li class="breadcrumb-item active">Consulta</li>
+	<li class="breadcrumb-item active">Listagem</li>
 </ol>
 <div class="container">
 
@@ -37,7 +37,8 @@
 							<th>ID</th>
 							<th>Titulo</th>
 							<th class="full">Descrição</th>
-							<th>Bairro</th>
+              <th>Bairro</th>
+              <th>Proprietario</th>
 							<th></th>
 						</tr>
 					</thead>
@@ -45,9 +46,14 @@
 						<tr *ngFor="let imovel of imoveis | filter:filter; let i = index">
 							<td>{{ imovel.id }}</td>
 							<td>{{ imovel.titulo }}</td>
-							<td class="full">{{ imovel.titulo }}</td>
-							<td>{{ imovel.bairro }}</td>
-							<td style="white-space:nowrap;">
+							<td class="full">{{ imovel.descricao }}</td>
+              <td>{{ imovel.bairro }}</td>
+              <td>{{ imovel.proprietario.nome }}</td>
+              <td style="white-space:nowrap;">
+                <button class="btn btn-info ml-1"
+								data-toggle="modal" data-target="#modalProprietario" (click)="preparaDelecao(imovel)">
+								<i class="fa fa-user-tag"></i>
+							</button>
 								<button class="btn btn-info ml-1"
 								data-toggle="modal" data-target="#modalDados" (click)="preparaDelecao(imovel)">
 								<i class="fa fa-address-card"></i>
@@ -95,7 +101,7 @@
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
-				<div><h4>Endereço</h4></div>
+				<div><h4>Imóvel</h4></div>
 				<div><button class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i></button></div>
 			</div>
 			<div class="modal-body" *ngIf="imovelSelecionado">
@@ -125,7 +131,7 @@
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
-				<div><h4>Consulta</h4></div>
+				<div><h4>Endereço</h4></div>
 				<div><button class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i></button></div>
 			</div>
 			<div class="modal-body" *ngIf="imovelSelecionado">
@@ -137,6 +143,29 @@
 					<p>Cidade: {{ imovelSelecionado.endereco.cidade }}</p>
 					<p>Cep: {{ imovelSelecionado.endereco.cep }}</p>
 					<p>Data de Cadastro: {{ imovelSelecionado.endereco.dataCadastro }}</p>
+				</div>
+			</div>
+			<div class="modal-footer">
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="modalProprietario" class="modal fase" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<div><h4>Proprietário</h4></div>
+				<div><button class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i></button></div>
+			</div>
+			<div class="modal-body" *ngIf="imovelSelecionado">
+				<div class="rolagem">
+					<h3><b>{{ imovelSelecionado.titulo }}</b></h3>
+					<p>Nome: {{ imovelSelecionado.proprietario.nome }}</p>
+					<p>Celular: {{ imovelSelecionado.proprietario.celular }}</p>
+					<p>Email: {{ imovelSelecionado.proprietario.email }}</p>
+					<p>Telefone: {{ imovelSelecionado.proprietario.telefone }}</p>
+					<p>Data de Cadastro: {{ imovelSelecionado.proprietario.dataCadastro }}</p>
 				</div>
 			</div>
 			<div class="modal-footer">
