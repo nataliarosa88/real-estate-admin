@@ -15,8 +15,8 @@ npm i ng2-search-filter --save
 }
 
 
-```
-
+``
+`
 ```
 systemctl daemon-reload && systemctl stop nginx && systemctl start nginx && systemctl status nginx
 ```
@@ -34,11 +34,12 @@ ng generate module app-routing --flat --module=app
 ```
 git config --global core.autocrlf true
 
+```
+
+
+
+```
 git config --global core.autocrlf input
-
-```
-
-```
 rm -rf .git && git init && git add . && git commit -m "Setup tje project" 
 ```
 
