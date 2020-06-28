@@ -57,7 +57,7 @@ export class ImoveisFormComponent implements OnInit {
       this.service
         .atualizar(this.imovel)
         .subscribe(response => {
-          console.log(response);
+          console.log("ENTREI AQUI NO UPDATE");
           this.success =true;
           this.errors = null;
         }, errorResponse => {
@@ -72,7 +72,7 @@ export class ImoveisFormComponent implements OnInit {
           this.success = true;
           this.errors = null;
           this.imovel = response;
-          console.log(response);
+          console.log("ENTREI NO SALVAR");
         } , errorResponse => {
             this.errors = errorResponse.error.errors;
         }

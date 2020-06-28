@@ -11,6 +11,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 public class ImovelDTO {
 
+    private Integer id;
     private String titulo;
     private String descricao;
     private String preco;
@@ -23,7 +24,6 @@ public class ImovelDTO {
     private String frente;
     private String tamanho;
     private String extra;
-    private LocalDate dataCadastro;
     private Endereco endereco;
     private Proprietario proprietario;
 

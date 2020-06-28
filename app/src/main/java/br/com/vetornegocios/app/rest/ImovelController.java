@@ -1,5 +1,6 @@
 package br.com.vetornegocios.app.rest;
 
+import br.com.vetornegocios.app.model.entity.Endereco;
 import br.com.vetornegocios.app.model.entity.Imovel;
 import br.com.vetornegocios.app.model.entity.Proprietario;
 import br.com.vetornegocios.app.model.repository.EnderecoRepository;
@@ -12,7 +13,10 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import javax.validation.Valid;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Objects;
 
 @RestController
 @RequestMapping("/imoveis")
@@ -34,15 +38,26 @@ public class ImovelController {
     @ResponseStatus(HttpStatus.CREATED)
     public Imovel salvar(@RequestBody @Valid ImovelDTO dto){
 
+        System.out.println(dto);
+
         Integer proprietarioId = dto.getProprietario().getId();
+        Integer enderecoId = dto.getEndereco().getId();
 
         Proprietario proprietario = proprietarioRepository
                         .findById(proprietarioId)
                         .orElseThrow(() ->
                                 new ResponseStatusException(
                                         HttpStatus.BAD_REQUEST, "Cliente inexistente"));
-
+//        Endereco endereco = null;
+//        if(Objects.nonNull(dto.getId())) {
+//            endereco = enderecoRepository
+//                    .findById(enderecoId)
+//                    .orElseThrow(() ->
+//                            new ResponseStatusException(
+//                                    HttpStatus.BAD_REQUEST, "Endereço inexistente"));
+//        }
         return imovelRepository.save( Imovel.builder()
+                .id(dto.getId())
                 .banheiros(dto.getBanheiros())
                 .comissao(dto.getComissao())
                 .condominio(dto.getCondominio())
@@ -57,7 +72,8 @@ public class ImovelController {
                 .tamanho(dto.getTamanho())
                 .titulo(dto.getTitulo())
                 .proprietario(proprietario)
-                .dataCadastro(dto.getDataCadastro())
+                .endereco(dto.getEndereco())
+//                .endereco(endereco)
                 .build());
     }
 

@@ -51,6 +51,7 @@ export class ClientesFormComponent implements OnInit {
         .subscribe(response => {
           this.success =true;
           this.errors = null;
+          console.log("ENTREI AQUI NO UPDATE");
         }, errorResponse => {
           this.errors = ['erro ao atualizar o cliente.']
         })
@@ -63,6 +64,7 @@ export class ClientesFormComponent implements OnInit {
           this.success = true;
           this.errors = null;
           this.cliente = response;
+          console.log("ENTREI NO SALVAR");
         } , errorResponse => {
             this.errors = errorResponse.error.errors;
         }
