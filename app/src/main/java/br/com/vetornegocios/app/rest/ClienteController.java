@@ -26,6 +26,11 @@ public class ClienteController {
         this.repository = repository;
     }
 
+    @GetMapping("/teste")
+    public String teste(){
+        return "testando jenkins";
+    }
+
     @GetMapping
     public List<Cliente> obterTodos(){
         return repository.findAll();
