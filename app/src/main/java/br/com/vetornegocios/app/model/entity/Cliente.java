@@ -35,6 +35,9 @@ public class Cliente {
     @Column(length = 11)
     private String celular;
 
+    @Column(length = 254)
+    private String interesse;
+
     @Column(name = "data_cadastro", updatable = false)
     @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate dataCadastro;
