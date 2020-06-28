@@ -25,7 +25,7 @@ public class ClienteController {
     public ClienteController(ClienteRepository repository) {
         this.repository = repository;
     }
-    ;
+
     @GetMapping
     public List<Cliente> obterTodos(){
         return repository.findAll();
@@ -67,6 +67,7 @@ public class ClienteController {
                     cliente.setEmail(clienteAtualizado.getEmail());
                     cliente.setTelefone(clienteAtualizado.getTelefone());
                     cliente.setCelular(clienteAtualizado.getCelular());
+                    cliente.setInteresse(clienteAtualizado.getInteresse());
                     return repository.save(cliente);
                 })
                 .orElseThrow( () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Cliente não encontrado") );
