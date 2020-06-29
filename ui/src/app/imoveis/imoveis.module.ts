@@ -6,6 +6,7 @@ import { ImoveisRoutingModule } from './imoveis-routing.module';
 import { ImoveisFormComponent } from './imoveis-form/imoveis-form.component';
 import { ImoveisListaComponent } from './imoveis-lista/imoveis-lista.component';
 import { RouterModule } from '@angular/router';
+import { TextMaskModule } from 'angular2-text-mask';
 
 @NgModule({
   declarations: [ImoveisFormComponent, ImoveisListaComponent],
@@ -14,7 +15,8 @@ import { RouterModule } from '@angular/router';
     ImoveisRoutingModule,
     FormsModule,
     RouterModule,
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
+    TextMaskModule
   ], exports: [
     ImoveisFormComponent,
     ImoveisListaComponent

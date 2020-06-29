@@ -6,6 +6,7 @@ import { ClientesRoutingModule } from './clientes-routing.module';
 import { ClientesFormComponent } from './clientes-form/clientes-form.component';
 import { ClientesListaComponent } from './clientes-lista/clientes-lista.component';
 import { RouterModule } from '@angular/router';
+import { TextMaskModule } from 'angular2-text-mask';
 
 @NgModule({
   declarations: [ClientesFormComponent, ClientesListaComponent],
@@ -14,7 +15,8 @@ import { RouterModule } from '@angular/router';
     ClientesRoutingModule,
     FormsModule,
     RouterModule,
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
+    TextMaskModule
   ], exports: [
     ClientesFormComponent,
     ClientesListaComponent

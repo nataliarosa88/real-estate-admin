@@ -48,14 +48,7 @@ public class ImovelController {
                         .orElseThrow(() ->
                                 new ResponseStatusException(
                                         HttpStatus.BAD_REQUEST, "Cliente inexistente"));
-//        Endereco endereco = null;
-//        if(Objects.nonNull(dto.getId())) {
-//            endereco = enderecoRepository
-//                    .findById(enderecoId)
-//                    .orElseThrow(() ->
-//                            new ResponseStatusException(
-//                                    HttpStatus.BAD_REQUEST, "Endereço inexistente"));
-//        }
+
         return imovelRepository.save( Imovel.builder()
                 .id(dto.getId())
                 .banheiros(dto.getBanheiros())
@@ -73,7 +66,6 @@ public class ImovelController {
                 .titulo(dto.getTitulo())
                 .proprietario(proprietario)
                 .endereco(dto.getEndereco())
-//                .endereco(endereco)
                 .build());
     }
 
@@ -128,6 +120,7 @@ public class ImovelController {
                     endereco.setBairro(imovelAtualizado.getEndereco().getBairro());
                     endereco.setCidade(imovelAtualizado.getEndereco().getCidade());
                     endereco.setCep(imovelAtualizado.getEndereco().getCep());
+                    endereco.setComplemento(imovelAtualizado.getEndereco().getComplemento());
                     return enderecoRepository.save(endereco);
                 })
                 .orElseThrow( () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Endereço não encontrado") );

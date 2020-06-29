@@ -174,7 +174,7 @@
       <div class="col-md-6">
         <div class="form-group">
           <label>Número: </label>
-          <input type="text" class="form-control"
+          <input type="text" class="form-control" maxlength="10"
                   [(ngModel)]="imovel.endereco.numero" name="numero" />
         </div>
       </div>
@@ -201,8 +201,15 @@
       <div class="col-md-6">
         <div class="form-group">
           <label>Cep: </label>
-          <input type="text" class="form-control"
+          <input type="text" class="form-control" [textMask]="{mask: mask}" ngModel maxlength="9"
                   [(ngModel)]="imovel.endereco.cep" name="cep" />
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>Complemento: </label>
+          <input type="text" class="form-control"
+                  [(ngModel)]="imovel.endereco.complemento" name="complemento" />
         </div>
       </div>
     </div>
