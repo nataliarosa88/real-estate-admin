@@ -5,6 +5,11 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Proprietario } from '../../proprietarios/proprietario';
 import { ProprietariosService } from '../../proprietarios.service';
+<<<<<<< Updated upstream
+=======
+import { TiposService } from '../../tipos.service';
+
+>>>>>>> Stashed changes
 
 @Component({
   selector: 'app-imoveis-form',
@@ -13,6 +18,11 @@ import { ProprietariosService } from '../../proprietarios.service';
 })
 export class ImoveisFormComponent implements OnInit {
 
+<<<<<<< Updated upstream
+=======
+  public myModel = '';
+  public mask = [ /\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/];
+>>>>>>> Stashed changes
   imovel: Imovel;
   proprietarios: Proprietario[] = [];
   success: boolean = false;
@@ -57,7 +67,10 @@ export class ImoveisFormComponent implements OnInit {
       this.service
         .atualizar(this.imovel)
         .subscribe(response => {
+<<<<<<< Updated upstream
           console.log("ENTREI AQUI NO UPDATE");
+=======
+>>>>>>> Stashed changes
           this.success =true;
           this.errors = null;
         }, errorResponse => {
@@ -72,7 +85,7 @@ export class ImoveisFormComponent implements OnInit {
           this.success = true;
           this.errors = null;
           this.imovel = response;
-          console.log("ENTREI NO SALVAR");
+
         } , errorResponse => {
             this.errors = errorResponse.error.errors;
         }

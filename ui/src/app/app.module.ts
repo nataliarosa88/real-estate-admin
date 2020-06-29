@@ -24,6 +24,10 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     AppRoutingModule,
     TemplateModule,
     ProprietariosModule,
+<<<<<<< Updated upstream
+=======
+    TiposModule,
+>>>>>>> Stashed changes
     ImoveisModule,
     ClientesModule,
     HttpClientModule,
