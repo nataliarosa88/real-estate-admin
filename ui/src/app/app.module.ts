@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { TemplateModule } from './template/template.module';
@@ -27,8 +26,6 @@ import { TextMaskModule } from 'angular2-text-mask';
     AppRoutingModule,
     TemplateModule,
     ProprietariosModule,
-    FormsModule,
-    ReactiveFormsModule,
     TiposModule,
     ImoveisModule,
     ClientesModule,
