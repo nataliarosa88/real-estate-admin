@@ -6,6 +6,7 @@ import { ProprietariosRoutingModule } from './proprietarios-routing.module';
 import { ProprietariosFormComponent } from './proprietarios-form/proprietarios-form.component';
 import { ProprietariosListaComponent } from './proprietarios-lista/proprietarios-lista.component';
 import { RouterModule } from '@angular/router';
+import { TextMaskModule } from 'angular2-text-mask';
 
 @NgModule({
   declarations: [ProprietariosFormComponent, ProprietariosListaComponent],
@@ -14,7 +15,8 @@ import { RouterModule } from '@angular/router';
     ProprietariosRoutingModule,
     FormsModule,
     RouterModule,
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
+    TextMaskModule
   ], exports: [
     ProprietariosFormComponent,
     ProprietariosListaComponent

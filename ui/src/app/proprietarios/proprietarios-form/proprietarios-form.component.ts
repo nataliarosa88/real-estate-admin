@@ -11,7 +11,9 @@ import { Observable } from 'rxjs';
   styleUrls: ['./proprietarios-form.component.css']
 })
 export class ProprietariosFormComponent implements OnInit {
-
+  public myModel = '';
+  public maskMobile = ['(', /[1-9]/, /\d/, ')', ' ', /\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
+  public maskPhone = ['(', /[1-9]/, /\d/, ')', ' ', /\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
   proprietario: Proprietario;
   success: boolean = false;
   errors: String[];
