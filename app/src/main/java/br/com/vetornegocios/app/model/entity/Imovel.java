@@ -8,7 +8,6 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
 @Entity
@@ -68,13 +67,11 @@ public class Imovel {
     private Endereco endereco;
 
     @ManyToOne
-    @JoinColumn(name = "proprietario_id", nullable = false)
-    @NotNull(message = "{campo.proprietario.obrigatorio}")
+    @JoinColumn(name = "proprietario_id")
     private Proprietario proprietario;
 
     @ManyToOne
-    @JoinColumn(name = "tipo_id", nullable = false)
-    @NotNull(message = "{campo.tipo.obrigatorio}")
+    @JoinColumn(name = "tipo_id")
     private Tipo tipo;
 
     @PrePersist

@@ -28,4 +28,9 @@ public class Tipo {
     @Column(name = "data_cadastro", updatable = false)
     @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate dataCadastro;
+
+    @PrePersist
+    public void prePersist(){
+        setDataCadastro(LocalDate.now());
+    }
 }
