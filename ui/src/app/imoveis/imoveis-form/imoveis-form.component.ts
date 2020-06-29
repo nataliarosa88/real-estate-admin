@@ -8,11 +8,13 @@ import { ProprietariosService } from '../../proprietarios.service';
 
 @Component({
   selector: 'app-imoveis-form',
-  templateUrl: './imoveis-form.component.html',
-  styleUrls: ['./imoveis-form.component.css']
+  styleUrls: ['./imoveis-form.component.css'],
+  templateUrl: './imoveis-form.component.html'
 })
 export class ImoveisFormComponent implements OnInit {
 
+  public myModel = '';
+  public mask = [ /\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/];
   imovel: Imovel;
   proprietarios: Proprietario[] = [];
   success: boolean = false;

@@ -34,8 +34,11 @@ public class Endereco {
     @Column(length = 200)
     private String cidade;
 
-    @Column(length = 8)
+    @Column(length = 20)
     private String cep;
+
+    @Column(length = 240)
+    private String complemento;
 
     @Column(name = "data_cadastro", updatable = false)
     @JsonFormat(pattern = "dd/MM/yyyy")

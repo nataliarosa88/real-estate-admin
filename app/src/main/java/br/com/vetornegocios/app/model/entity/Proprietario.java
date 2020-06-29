@@ -28,10 +28,10 @@ public class Proprietario {
     @Column(length = 254)
     private String email;
 
-    @Column(length = 11)
+    @Column(length = 20)
     private String telefone;
 
-    @Column(length = 11)
+    @Column(length = 20)
     private String celular;
 
     @Column(name = "data_cadastro", updatable = false)

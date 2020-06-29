@@ -13,6 +13,7 @@ import { ImoveisService } from './imoveis.service';
 import { ProprietariosModule } from './proprietarios/proprietarios.module';
 import { ProprietariosService } from './proprietarios.service';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { TextMaskModule } from 'angular2-text-mask';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     ImoveisModule,
     ClientesModule,
     HttpClientModule,
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
+    TextMaskModule
   ],
   providers: [
     ClientesService,

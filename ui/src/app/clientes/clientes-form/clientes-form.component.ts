@@ -5,13 +5,15 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Observable } from 'rxjs';
 
 
+
 @Component({
   selector: 'app-clientes-form',
-  templateUrl: './clientes-form.component.html',
-  styleUrls: ['./clientes-form.component.css']
+  styleUrls: ['./clientes-form.component.css'],
+  templateUrl: './clientes-form.component.html'
 })
 export class ClientesFormComponent implements OnInit {
-
+  public myModel = '';
+  public mask = ['(', /[1-9]/, /\d/, ')', ' ', /\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
   cliente: Cliente;
   success: boolean = false;
   errors: String[];
@@ -44,8 +46,9 @@ export class ClientesFormComponent implements OnInit {
   }
 
   onSubmit(){
+    console.log()
     if( this.id ) {
-
+      this.cliente.telefone;
       this.service
         .atualizar(this.cliente)
         .subscribe(response => {

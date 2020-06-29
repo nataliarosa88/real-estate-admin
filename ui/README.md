@@ -2,6 +2,7 @@
 ng build --base-href /real-estate-admin --deploy-url /real-estate-admin/ --prod
 
 npm i ng2-search-filter --save
+npm i angular2-text-mask --save
 
 
 .fab {
