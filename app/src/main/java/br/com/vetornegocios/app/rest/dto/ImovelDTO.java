@@ -5,8 +5,6 @@ import br.com.vetornegocios.app.model.entity.Proprietario;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDate;
-
 @Data
 @NoArgsConstructor
 public class ImovelDTO {
