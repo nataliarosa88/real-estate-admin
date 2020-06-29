@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { ImoveisRoutingModule } from './imoveis-routing.module';
 import { ImoveisFormComponent } from './imoveis-form/imoveis-form.component';
@@ -16,6 +16,7 @@ import { TextMaskModule } from 'angular2-text-mask';
     FormsModule,
     RouterModule,
     Ng2SearchPipeModule,
+    ReactiveFormsModule,
     TextMaskModule
   ], exports: [
     ImoveisFormComponent,

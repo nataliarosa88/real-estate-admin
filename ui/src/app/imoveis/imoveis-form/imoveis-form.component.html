@@ -3,7 +3,7 @@
     <li class="breadcrumb-item active">{{ imovel.id ? 'Edição' : 'Cadastro' }}</li>
 </ol>
 <div class="container">
-  <form #imovelForm="ngForm" (ngSubmit)="onSubmit()">
+  <form #imovelForm="ngForm" (ngSubmit)="onSubmit()" [formGroup]="tituloForm">
 
     <div class="row">
       <div class="col-md-12">
@@ -36,8 +36,12 @@
       <div class="col-md-6">
         <div class="form-group">
           <label>Titulo: *</label>
-          <input type="text" class="form-control"
+          <input type="text" class="form-control" formControlName="titulo"
                   [(ngModel)]="imovel.titulo" name="titulo" />
+                  <div *ngIf="tituloForm.get('titulo').invalid && (tituloForm.get('titulo').dirty ||
+                  tituloForm.get('titulo').touched)" class="alert alert-danger">
+                  O Título é Obrigatório
+                </div>
         </div>
       </div>
       <div class="col-md-6">
@@ -45,6 +49,37 @@
           <label>Descrição: </label>
           <input type="text" class="form-control"
           [(ngModel)]="imovel.descricao" name="descricao"/>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>Proprietário: </label>
+          <select class="form-control" required
+                  [ngModelOptions]="{standalone: true}"
+                  [(ngModel)]="imovel.proprietario.id">
+            <option value="">Selecione ...</option>
+            <option *ngFor="let proprietario of proprietarios"
+                    [ngValue]="proprietario.id">
+              {{ proprietario.nome }}
+            </option>
+          </select>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>Tipo: </label>
+          <select class="form-control" required
+                  [ngModelOptions]="{standalone: true}"
+                  [(ngModel)]="imovel.tipo.id">
+            <option value="">Selecione ...</option>
+            <option *ngFor="let tipo of tipos"
+                    [ngValue]="tipo.id">
+              {{ tipo.nome }}
+            </option>
+          </select>
         </div>
       </div>
     </div>
@@ -76,20 +111,6 @@
           <label>Condomínio: </label>
           <input type="text" class="form-control"
                   [(ngModel)]="imovel.condominio" name="condominio" />
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="form-group">
-          <label>Proprietário: </label>
-          <select class="form-control"
-                  [ngModelOptions]="{standalone: true}"
-                  [(ngModel)]="imovel.proprietario.id">
-            <option value="">Selecione ...</option>
-            <option *ngFor="let proprietario of proprietarios"
-                    [ngValue]="proprietario.id">
-              {{ proprietario.nome }}
-            </option>
-          </select>
         </div>
       </div>
     </div>
@@ -201,7 +222,7 @@
       <div class="col-md-6">
         <div class="form-group">
           <label>Cep: </label>
-          <input type="text" class="form-control" [textMask]="{mask: mask}" ngModel maxlength="9"
+          <input type="text" class="form-control" [textMask]="{mask: mask}"
                   [(ngModel)]="imovel.endereco.cep" name="cep" />
         </div>
       </div>

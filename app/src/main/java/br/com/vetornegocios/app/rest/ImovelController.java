@@ -1,6 +1,5 @@
 package br.com.vetornegocios.app.rest;
 
-import br.com.vetornegocios.app.model.entity.Endereco;
 import br.com.vetornegocios.app.model.entity.Imovel;
 import br.com.vetornegocios.app.model.entity.Proprietario;
 import br.com.vetornegocios.app.model.repository.EnderecoRepository;
@@ -13,10 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import javax.validation.Valid;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
-import java.util.Objects;
 
 @RestController
 @RequestMapping("/imoveis")

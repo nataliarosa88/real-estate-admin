@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { TemplateModule } from './template/template.module';
@@ -12,6 +12,8 @@ import { ImoveisModule } from './imoveis/imoveis.module';
 import { ImoveisService } from './imoveis.service';
 import { ProprietariosModule } from './proprietarios/proprietarios.module';
 import { ProprietariosService } from './proprietarios.service';
+import { TiposModule } from './tipos/tipos.module';
+import { TiposService } from './tipos.service';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { TextMaskModule } from 'angular2-text-mask';
 
@@ -25,6 +27,9 @@ import { TextMaskModule } from 'angular2-text-mask';
     AppRoutingModule,
     TemplateModule,
     ProprietariosModule,
+    FormsModule,
+    ReactiveFormsModule,
+    TiposModule,
     ImoveisModule,
     ClientesModule,
     HttpClientModule,
@@ -34,6 +39,7 @@ import { TextMaskModule } from 'angular2-text-mask';
   providers: [
     ClientesService,
     ProprietariosService,
+    TiposService,
     ImoveisService
   ],
   bootstrap: [AppComponent]
