@@ -72,6 +72,10 @@ public class Imovel {
     @ManyToOne
     @JoinColumn(name = "proprietario_id")
     private Proprietario proprietario;
+	
+	@ManyToOne
+    @JoinColumn(name = "tipo_id")
+    private Tipo tipo;
 
     @PrePersist
     public void prePersist(){

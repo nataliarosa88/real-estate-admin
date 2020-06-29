@@ -8,7 +8,6 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
-
 import java.time.LocalDate;
 
 @Entity
@@ -16,7 +15,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Cliente {
+public class Tipo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,18 +24,6 @@ public class Cliente {
     @Column(nullable = false, length = 150)
     @NotEmpty(message = "{campo.nome.obrigatorio}")
     private String nome;
-
-    @Column(length = 200)
-     private String email;
-
-    @Column(length = 11)
-    private String telefone;
-
-    @Column(length = 11)
-    private String celular;
-
-    @Column(length = 254)
-    private String interesse;
 
     @Column(name = "data_cadastro", updatable = false)
     @JsonFormat(pattern = "dd/MM/yyyy")
