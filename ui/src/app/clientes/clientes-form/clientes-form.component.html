@@ -42,9 +42,9 @@
       </div>
       <div class="col-md-6">
         <div class="form-group">
-          <label>Telefone: </label>
-          <input type="text" class="form-control" [textMask]="{mask: mask}"
-          [(ngModel)]="cliente.telefone" name="telefone"/>
+          <label>Celular: </label>
+          <input type="text" class="form-control" [textMask]="{mask: maskMobile}"
+          [(ngModel)]="cliente.celular" name="celular"/>
         </div>
       </div>
     </div>
@@ -59,9 +59,9 @@
       </div>
       <div class="col-md-6">
         <div class="form-group">
-          <label>Celular: </label>
-          <input type="text" class="form-control" [textMask]="{mask: mask}" ngModel maxlength="15"
-          [(ngModel)]="cliente.celular" name="celular"/>
+          <label>Telefone: </label>
+          <input type="text" class="form-control" [textMask]="{mask: maskPhone}"
+          [(ngModel)]="cliente.telefone" name="telefone"/>
         </div>
       </div>
     </div>

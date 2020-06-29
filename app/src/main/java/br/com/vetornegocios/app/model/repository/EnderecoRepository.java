@@ -1,6 +1,5 @@
 package br.com.vetornegocios.app.model.repository;
 
-import br.com.vetornegocios.app.model.entity.Cliente;
 import br.com.vetornegocios.app.model.entity.Endereco;
 import org.springframework.data.jpa.repository.JpaRepository;
 

@@ -4,7 +4,11 @@ import { ImoveisService } from '../../imoveis.service';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Proprietario } from '../../proprietarios/proprietario';
+import { Tipo } from '../../tipos/tipo';
 import { ProprietariosService } from '../../proprietarios.service';
+import { TiposService } from '../../tipos.service';
+import { Validators, FormControl, FormGroup } from '@angular/forms';
+
 
 @Component({
   selector: 'app-imoveis-form',
@@ -12,18 +16,23 @@ import { ProprietariosService } from '../../proprietarios.service';
   templateUrl: './imoveis-form.component.html'
 })
 export class ImoveisFormComponent implements OnInit {
-
+  public form = new Imovel();
   public myModel = '';
   public mask = [ /\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/];
   imovel: Imovel;
   proprietarios: Proprietario[] = [];
+  tipos: Tipo[] = [];
   success: boolean = false;
   errors: String[];
   id: number;
+
+  public tituloForm: FormGroup;
+
   constructor(
       private service : ImoveisService,
       private router : Router,
       private proprietariosService: ProprietariosService,
+      private tiposService: TiposService,
       private activatedRoute: ActivatedRoute
       ) {
           this.imovel = new Imovel();
@@ -34,6 +43,10 @@ export class ImoveisFormComponent implements OnInit {
     .getProprietarios()
     .subscribe(
       response => this.proprietarios = response );
+      this.tiposService
+      .getTipos()
+      .subscribe(
+        response => this.tipos = response );
     let params : Observable<Params> = this.activatedRoute.params
     params.subscribe( urlParams => {
       this.id = urlParams['id']
@@ -46,10 +59,19 @@ export class ImoveisFormComponent implements OnInit {
               )
       }
     })
+    this.tituloForm = new FormGroup({
+      'titulo': new FormControl(this.form.titulo, [Validators.required])});
+      this.createForm(new Imovel());
   }
 
   voltarParaListagem(){
     this.router.navigate(['/imoveis-lista'])
+  }
+
+  createForm(imovel: Imovel) {
+    this.tituloForm = new FormGroup({
+      titulo: new FormControl(imovel.titulo)
+    })
   }
 
   onSubmit(){
@@ -59,7 +81,7 @@ export class ImoveisFormComponent implements OnInit {
       this.service
         .atualizar(this.imovel)
         .subscribe(response => {
-          console.log("ENTREI AQUI NO UPDATE");
+          console.log("ENTREI NO UPDATE");
           this.success =true;
           this.errors = null;
         }, errorResponse => {

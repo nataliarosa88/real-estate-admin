@@ -1,8 +1,6 @@
 package br.com.vetornegocios.app.model.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -70,8 +68,14 @@ public class Imovel {
     private Endereco endereco;
 
     @ManyToOne
-    @JoinColumn(name = "proprietario_id")
+    @JoinColumn(name = "proprietario_id", nullable = false)
+    @NotNull(message = "{campo.proprietario.obrigatorio}")
     private Proprietario proprietario;
+
+    @ManyToOne
+    @JoinColumn(name = "tipo_id", nullable = false)
+    @NotNull(message = "{campo.tipo.obrigatorio}")
+    private Tipo tipo;
 
     @PrePersist
     public void prePersist(){

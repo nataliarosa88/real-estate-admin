@@ -1,30 +1,29 @@
 import { Component, OnInit } from '@angular/core';
-import { Cliente } from '../cliente'
-import { ClientesService } from '../../clientes.service';
+import { Tipo } from '../tipo'
+import { TiposService } from '../../tipos.service';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Observable } from 'rxjs';
 
 
-
 @Component({
-  selector: 'app-clientes-form',
-  styleUrls: ['./clientes-form.component.css'],
-  templateUrl: './clientes-form.component.html'
+  selector: 'app-tipos-form',
+  templateUrl: './tipos-form.component.html',
+  styleUrls: ['./tipos-form.component.css']
 })
-export class ClientesFormComponent implements OnInit {
+export class TiposFormComponent implements OnInit {
   public myModel = '';
   public maskMobile = ['(', /[1-9]/, /\d/, ')', ' ', /\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
   public maskPhone = ['(', /[1-9]/, /\d/, ')', ' ', /\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
-  cliente: Cliente;
+  tipo: Tipo;
   success: boolean = false;
   errors: String[];
   id: number;
   constructor(
-      private service : ClientesService,
+      private service : TiposService,
       private router : Router,
       private activatedRoute: ActivatedRoute
       ) {
-    this.cliente = new Cliente();
+    this.tipo = new Tipo();
    }
 
   ngOnInit(): void {
@@ -33,42 +32,39 @@ export class ClientesFormComponent implements OnInit {
       this.id = urlParams['id']
       if(this.id){
         this.service
-              .getClienteById(this.id)
+              .getTipoById(this.id)
               .subscribe(
-                response => this.cliente = response ,
-                errorResponse => this.cliente = new Cliente()
+                response => this.tipo = response ,
+                errorResponse => this.tipo = new Tipo()
               )
       }
     })
   }
 
   voltarParaListagem(){
-    this.router.navigate(['/clientes-lista'])
+    this.router.navigate(['/tipos-lista'])
   }
 
   onSubmit(){
-    console.log()
     if( this.id ) {
-      this.cliente.telefone;
+
       this.service
-        .atualizar(this.cliente)
+        .atualizar(this.tipo)
         .subscribe(response => {
           this.success =true;
           this.errors = null;
-          console.log("ENTREI AQUI NO UPDATE");
         }, errorResponse => {
-          this.errors = ['erro ao atualizar o cliente.']
+          this.errors = ['erro ao atualizar o tipo.']
         })
 
     } else {
       this.service
-      .salvar(this.cliente)
+      .salvar(this.tipo)
       .subscribe(
         response => {
           this.success = true;
           this.errors = null;
-          this.cliente = response;
-          console.log("ENTREI NO SALVAR");
+          this.tipo = response;
         } , errorResponse => {
             this.errors = errorResponse.error.errors;
         }
