@@ -59,9 +59,6 @@ public class TipoController {
                 .findById(id)
                 .map( tipo -> {
                     tipo.setNome(tipoAtualizado.getNome());
-                    tipo.setEmail(tipoAtualizado.getEmail());
-                    tipo.setTelefone(tipoAtualizado.getTelefone());
-                    tipo.setCelular(tipoAtualizado.getCelular());
                     return repository.save(tipo);
                 })
                 .orElseThrow( () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Tipo não encontrado") );
