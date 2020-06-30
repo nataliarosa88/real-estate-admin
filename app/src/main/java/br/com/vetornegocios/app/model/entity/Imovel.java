@@ -1,15 +1,12 @@
 package br.com.vetornegocios.app.model.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
@@ -25,7 +22,6 @@ public class Imovel {
     private Integer id;
 
     @Column(nullable = false, length = 150)
-    @NotEmpty(message = "{campo.titulo.obrigatorio}")
     private String titulo;
 
     @Column(length = 254)
@@ -70,12 +66,14 @@ public class Imovel {
     private Endereco endereco;
 
     @ManyToOne
-    @JoinColumn(name = "proprietario_id")
-    private Proprietario proprietario;
-	
-	@ManyToOne
-    @JoinColumn(name = "tipo_id")
+    @JoinColumn(name = "tipo_id", nullable = false)
+    @NotNull(message = "{campo.tipo.obrigatorio}")
     private Tipo tipo;
+
+    @ManyToOne
+    @JoinColumn(name = "proprietario_id")
+    @NotNull(message = "{campo.proprietario.obrigatorio}")
+    private Proprietario proprietario;
 
     @PrePersist
     public void prePersist(){

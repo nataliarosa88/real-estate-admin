@@ -7,7 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
 @Entity
@@ -21,17 +21,17 @@ public class Proprietario {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @NotNull(message = "{campo.nome.obrigatorio}")
     @Column(nullable = false, length = 150)
-    @NotEmpty(message = "{campo.nome.obrigatorio}")
     private String nome;
 
     @Column(length = 254)
     private String email;
 
-    @Column(length = 11)
+    @Column(length = 20)
     private String telefone;
 
-    @Column(length = 11)
+    @Column(length = 20)
     private String celular;
 
     @Column(name = "data_cadastro", updatable = false)

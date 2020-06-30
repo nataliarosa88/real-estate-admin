@@ -53,7 +53,7 @@
       <div class="col-md-6">
         <div class="form-group">
           <label>Proprietário: </label>
-          <select class="form-control"
+          <select class="form-control" name="proprietario"
                   [ngModelOptions]="{standalone: true}"
                   [(ngModel)]="imovel.proprietario.id">
             <option value="">Selecione ...</option>
@@ -67,7 +67,7 @@
       <div class="col-md-6">
         <div class="form-group">
           <label>Tipo: </label>
-          <select class="form-control"
+          <select class="form-control" name="tipo"
                   [ngModelOptions]="{standalone: true}"
                   [(ngModel)]="imovel.tipo.id">
             <option value="">Selecione ...</option>

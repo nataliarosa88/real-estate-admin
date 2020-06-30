@@ -29,6 +29,7 @@ public class TipoController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public Tipo salvar( @RequestBody @Valid Tipo tipo ){
+
         return repository.save(tipo);
     }
 

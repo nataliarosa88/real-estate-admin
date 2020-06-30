@@ -8,7 +8,6 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
-
 import java.time.LocalDate;
 
 @Entity
@@ -29,10 +28,10 @@ public class Cliente {
     @Column(length = 200)
      private String email;
 
-    @Column(length = 11)
+    @Column(length = 20)
     private String telefone;
 
-    @Column(length = 11)
+    @Column(length = 20)
     private String celular;
 
     @Column(length = 254)
