@@ -1,11 +1,12 @@
 package br.com.vetornegocios.app.rest;
 
-import br.com.vetornegocios.app.model.entity.Endereco;
 import br.com.vetornegocios.app.model.entity.Imovel;
 import br.com.vetornegocios.app.model.entity.Proprietario;
+import br.com.vetornegocios.app.model.entity.Tipo;
 import br.com.vetornegocios.app.model.repository.EnderecoRepository;
 import br.com.vetornegocios.app.model.repository.ImovelRepository;
 import br.com.vetornegocios.app.model.repository.ProprietarioRepository;
+import br.com.vetornegocios.app.model.repository.TipoRepository;
 import br.com.vetornegocios.app.rest.dto.ImovelDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -13,10 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import javax.validation.Valid;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
-import java.util.Objects;
 
 @RestController
 @RequestMapping("/imoveis")
@@ -29,6 +27,8 @@ public class ImovelController {
 
     private final ProprietarioRepository proprietarioRepository;
 
+    private final TipoRepository tipoRepository;
+
     @GetMapping
     public List<Imovel> obterTodos(){
         return imovelRepository.findAll();
@@ -38,24 +38,21 @@ public class ImovelController {
     @ResponseStatus(HttpStatus.CREATED)
     public Imovel salvar(@RequestBody @Valid ImovelDTO dto){
 
-        System.out.println(dto);
-
         Integer proprietarioId = dto.getProprietario().getId();
-        Integer enderecoId = dto.getEndereco().getId();
+        Integer tipoId = dto.getTipo().getId();
 
         Proprietario proprietario = proprietarioRepository
                         .findById(proprietarioId)
                         .orElseThrow(() ->
                                 new ResponseStatusException(
-                                        HttpStatus.BAD_REQUEST, "Cliente inexistente"));
-//        Endereco endereco = null;
-//        if(Objects.nonNull(dto.getId())) {
-//            endereco = enderecoRepository
-//                    .findById(enderecoId)
-//                    .orElseThrow(() ->
-//                            new ResponseStatusException(
-//                                    HttpStatus.BAD_REQUEST, "Endereço inexistente"));
-//        }
+                                        HttpStatus.BAD_REQUEST, "Proprietário inexistente"));
+
+        Tipo tipo = tipoRepository
+                .findById(tipoId)
+                .orElseThrow(() ->
+                        new ResponseStatusException(
+                                HttpStatus.BAD_REQUEST, "Tipo inexistente"));
+
         return imovelRepository.save( Imovel.builder()
                 .id(dto.getId())
                 .banheiros(dto.getBanheiros())
@@ -71,9 +68,9 @@ public class ImovelController {
                 .suites(dto.getSuites())
                 .tamanho(dto.getTamanho())
                 .titulo(dto.getTitulo())
-                .proprietario(proprietario)
                 .endereco(dto.getEndereco())
-//                .endereco(endereco)
+                .proprietario(proprietario)
+                .tipo(tipo)
                 .build());
     }
 
@@ -97,39 +94,40 @@ public class ImovelController {
     }
 
     @PutMapping("{id}")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void atualizar( @PathVariable Integer id,
+    @ResponseStatus(HttpStatus.OK)
+    public Imovel atualizar( @PathVariable Integer id,
                            @RequestBody @Valid Imovel imovelAtualizado ) {
-        imovelRepository
+       Imovel imovel = imovelRepository
                 .findById(id)
-                .map( imovel -> {
-                    imovel.setTitulo(imovelAtualizado.getTitulo());
-                    imovel.setDescricao(imovelAtualizado.getDescricao());
-                    imovel.setPreco(imovelAtualizado.getPreco());
-                    imovel.setComissao(imovelAtualizado.getComissao());
-                    imovel.setCondominio(imovelAtualizado.getCondominio());
-                    imovel.setProprietario(imovelAtualizado.getProprietario());
-                    imovel.setDormitorios(imovelAtualizado.getDormitorios());
-                    imovel.setSuites(imovelAtualizado.getSuites());
-                    imovel.setBanheiros(imovelAtualizado.getBanheiros());
-                    imovel.setQuintal(imovelAtualizado.getQuintal());
-                    imovel.setFrente(imovelAtualizado.getFrente());
-                    imovel.setTamanho(imovelAtualizado.getTamanho());
-                    imovel.setExtra(imovelAtualizado.getExtra());
-                    return imovelRepository.save(imovel);
+                .map( i -> {
+                    i.setTitulo(imovelAtualizado.getTitulo());
+                    i.setDescricao(imovelAtualizado.getDescricao());
+                    i.setPreco(imovelAtualizado.getPreco());
+                    i.setComissao(imovelAtualizado.getComissao());
+                    i.setCondominio(imovelAtualizado.getCondominio());
+                    i.setDormitorios(imovelAtualizado.getDormitorios());
+                    i.setSuites(imovelAtualizado.getSuites());
+                    i.setBanheiros(imovelAtualizado.getBanheiros());
+                    i.setQuintal(imovelAtualizado.getQuintal());
+                    i.setFrente(imovelAtualizado.getFrente());
+                    i.setTamanho(imovelAtualizado.getTamanho());
+                    i.setExtra(imovelAtualizado.getExtra());
+                    return imovelRepository.save(i);
                 })
                 .orElseThrow( () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Imóvel não encontrado") );
 
         enderecoRepository
                 .findById(imovelAtualizado.getEndereco().getId())
-                .map( endereco -> {
-                    endereco.setRua(imovelAtualizado.getEndereco().getRua());
-                    endereco.setNumero(imovelAtualizado.getEndereco().getNumero());
-                    endereco.setBairro(imovelAtualizado.getEndereco().getBairro());
-                    endereco.setCidade(imovelAtualizado.getEndereco().getCidade());
-                    endereco.setCep(imovelAtualizado.getEndereco().getCep());
-                    return enderecoRepository.save(endereco);
+                .map( e -> {
+                    e.setRua(imovelAtualizado.getEndereco().getRua());
+                    e.setNumero(imovelAtualizado.getEndereco().getNumero());
+                    e.setBairro(imovelAtualizado.getEndereco().getBairro());
+                    e.setCidade(imovelAtualizado.getEndereco().getCidade());
+                    e.setCep(imovelAtualizado.getEndereco().getCep());
+                    return enderecoRepository.save(e);
                 })
                 .orElseThrow( () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Endereço não encontrado") );
+
+        return imovel;
     }
 }

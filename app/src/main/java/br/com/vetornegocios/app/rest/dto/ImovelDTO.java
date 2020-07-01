@@ -1,17 +1,20 @@
 package br.com.vetornegocios.app.rest.dto;
 
 import br.com.vetornegocios.app.model.entity.Endereco;
-import br.com.vetornegocios.app.model.entity.Proprietario;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDate;
+import javax.validation.Valid;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
 
 @Data
 @NoArgsConstructor
 public class ImovelDTO {
 
     private Integer id;
+    @NotEmpty(message = "{campo.titulo.obrigatorio}")
     private String titulo;
     private String descricao;
     private String preco;
@@ -25,6 +28,11 @@ public class ImovelDTO {
     private String tamanho;
     private String extra;
     private Endereco endereco;
-    private Proprietario proprietario;
+    @Valid
+    @NotNull(message = "{campo.tipo.obrigatorio}")
+    private TipoDTO tipo;
+    @Valid
+    @NotNull(message = "{campo.proprietario.obrigatorio}")
+    private ProprietarioDTO proprietario;
 
 }

@@ -49,6 +49,37 @@
       </div>
     </div>
 
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>Proprietário: </label>
+          <select class="form-control" name="proprietario"
+                  [ngModelOptions]="{standalone: true}"
+                  [(ngModel)]="imovel.proprietario.id">
+            <option value="">Selecione ...</option>
+            <option *ngFor="let proprietario of proprietarios"
+                    [ngValue]="proprietario.id">
+              {{ proprietario.nome }}
+            </option>
+          </select>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>Tipo: </label>
+          <select class="form-control" name="tipo"
+                  [ngModelOptions]="{standalone: true}"
+                  [(ngModel)]="imovel.tipo.id">
+            <option value="">Selecione ...</option>
+            <option *ngFor="let tipo of tipos"
+                    [ngValue]="tipo.id">
+              {{ tipo.nome }}
+            </option>
+          </select>
+        </div>
+      </div>
+    </div>
+
     <ol class="breadcrumb mb-4">
       <li class="breadcrumb-item active">Informações financeiras</li>
     </ol>
@@ -76,20 +107,6 @@
           <label>Condomínio: </label>
           <input type="text" class="form-control"
                   [(ngModel)]="imovel.condominio" name="condominio" />
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="form-group">
-          <label>Proprietário: </label>
-          <select class="form-control"
-                  [ngModelOptions]="{standalone: true}"
-                  [(ngModel)]="imovel.proprietario.id">
-            <option value="">Selecione ...</option>
-            <option *ngFor="let proprietario of proprietarios"
-                    [ngValue]="proprietario.id">
-              {{ proprietario.nome }}
-            </option>
-          </select>
         </div>
       </div>
     </div>
@@ -174,7 +191,7 @@
       <div class="col-md-6">
         <div class="form-group">
           <label>Número: </label>
-          <input type="text" class="form-control"
+          <input type="text" class="form-control" maxlength="10"
                   [(ngModel)]="imovel.endereco.numero" name="numero" />
         </div>
       </div>
@@ -201,8 +218,15 @@
       <div class="col-md-6">
         <div class="form-group">
           <label>Cep: </label>
-          <input type="text" class="form-control"
+          <input type="text" class="form-control" [textMask]="{mask: mask}"
                   [(ngModel)]="imovel.endereco.cep" name="cep" />
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>Complemento: </label>
+          <input type="text" class="form-control"
+                  [(ngModel)]="imovel.endereco.complemento" name="complemento" />
         </div>
       </div>
     </div>

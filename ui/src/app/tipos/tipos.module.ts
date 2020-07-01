@@ -2,26 +2,26 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
-import { ImoveisRoutingModule } from './imoveis-routing.module';
-import { ImoveisFormComponent } from './imoveis-form/imoveis-form.component';
-import { ImoveisListaComponent } from './imoveis-lista/imoveis-lista.component';
+import { TiposRoutingModule } from './tipos-routing.module';
+import { TiposFormComponent } from './tipos-form/tipos-form.component';
+import { TiposListaComponent } from './tipos-lista/tipos-lista.component';
 import { RouterModule } from '@angular/router';
 import { TextMaskModule } from 'angular2-text-mask';
 
 @NgModule({
-  declarations: [ImoveisFormComponent, ImoveisListaComponent],
+  declarations: [TiposFormComponent, TiposListaComponent],
   imports: [
     CommonModule,
-    ImoveisRoutingModule,
+    TiposRoutingModule,
     FormsModule,
     RouterModule,
     Ng2SearchPipeModule,
     TextMaskModule
   ], exports: [
-    ImoveisFormComponent,
-    ImoveisListaComponent
+    TiposFormComponent,
+    TiposListaComponent
   ]
 })
-export class ImoveisModule {
+export class TiposModule {
 
 }

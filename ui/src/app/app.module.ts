@@ -12,7 +12,10 @@ import { ImoveisModule } from './imoveis/imoveis.module';
 import { ImoveisService } from './imoveis.service';
 import { ProprietariosModule } from './proprietarios/proprietarios.module';
 import { ProprietariosService } from './proprietarios.service';
+import { TiposModule } from './tipos/tipos.module';
+import { TiposService } from './tipos.service';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { TextMaskModule } from 'angular2-text-mask';
 
 @NgModule({
   declarations: [
@@ -24,14 +27,17 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     AppRoutingModule,
     TemplateModule,
     ProprietariosModule,
+    TiposModule,
     ImoveisModule,
     ClientesModule,
     HttpClientModule,
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
+    TextMaskModule
   ],
   providers: [
     ClientesService,
     ProprietariosService,
+    TiposService,
     ImoveisService
   ],
   bootstrap: [AppComponent]

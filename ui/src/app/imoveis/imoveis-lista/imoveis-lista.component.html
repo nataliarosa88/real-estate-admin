@@ -38,7 +38,8 @@
 							<th>Titulo</th>
 							<th class="full">Descrição</th>
               <th>Bairro</th>
-              <th>Proprietario</th>
+              <th class="full">Tipo</th>
+              <th class="full">Proprietario</th>
 							<th></th>
 						</tr>
 					</thead>
@@ -48,7 +49,8 @@
 							<td>{{ imovel.titulo }}</td>
 							<td class="full">{{ imovel.descricao }}</td>
               <td>{{ imovel.endereco.bairro }}</td>
-              <td>{{ imovel.proprietario.nome }}</td>
+              <td class="full">{{ imovel.tipo.nome }}</td>
+              <td class="full">{{ imovel.proprietario.nome }}</td>
               <td style="white-space:nowrap;">
                 <button title="Proprietário" class="btn btn-info ml-1"
 								data-toggle="modal" data-target="#modalProprietario" (click)="preparaDelecao(imovel)">
@@ -108,7 +110,8 @@
 				<div class="rolagem">
 					<h3><b>{{ imovelSelecionado.titulo }}</b></h3>
 					<p>Descrição: {{ imovelSelecionado.descricao }}</p>
-					<p>Tamanho: {{ imovelSelecionado.tamanho }}</p>
+          <p>Tamanho: {{ imovelSelecionado.tamanho }}</p>
+          <p>Tipo: {{ imovelSelecionado.tipo.nome }}</p>
 					<p>Preço: {{ imovelSelecionado.preco }}</p>
           <p>Comissão: {{ imovelSelecionado.comissao }}</p>
           <p>Condomínio: {{ imovelSelecionado.condominio }}</p>
@@ -138,7 +141,8 @@
 				<div class="rolagem">
 					<h3><b>{{ imovelSelecionado.titulo }}</b></h3>
 					<p>Rua: {{ imovelSelecionado.endereco.rua }}</p>
-					<p>Numero: {{ imovelSelecionado.endereco.numero }}</p>
+					  <p>Numero: {{ imovelSelecionado.endereco.numero }}</p>
+					  <p>Cep: {{ imovelSelecionado.endereco.complemento }}</p>
 					<p>Bairro: {{ imovelSelecionado.endereco.bairro }}</p>
 					<p>Cidade: {{ imovelSelecionado.endereco.cidade }}</p>
 					<p>Cep: {{ imovelSelecionado.endereco.cep }}</p>
@@ -170,7 +174,7 @@
 				</div>
 			</div>
 			<div class="modal-footer" *ngIf="imovelSelecionado">
-        <mark>Data de Cadastro: {{ imovelSelecionado.proprietario.dataCadastro }}</mark>
+        <mark><i class="fa fa-calendar-alt"></i> Data de Cadastro: {{ imovelSelecionado.proprietario.dataCadastro }}</mark>
 			</div>
 		</div>
 	</div>

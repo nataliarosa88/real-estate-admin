@@ -8,7 +8,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
 import java.time.LocalDate;
 
 @Entity
@@ -28,13 +27,16 @@ public class Endereco {
     @Column(length = 10)
      private String numero;
 
+    @Column(length = 10)
+    private String complemento;
+
     @Column(length = 200)
     private String bairro;
 
     @Column(length = 200)
     private String cidade;
 
-    @Column(length = 8)
+    @Column(length = 20)
     private String cep;
 
     @Column(name = "data_cadastro", updatable = false)
