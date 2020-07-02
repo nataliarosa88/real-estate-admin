@@ -97,6 +97,19 @@ public class ImovelController {
     @ResponseStatus(HttpStatus.OK)
     public Imovel atualizar( @PathVariable Integer id,
                            @RequestBody @Valid Imovel imovelAtualizado ) {
+
+        Proprietario proprietario = proprietarioRepository
+                .findById(imovelAtualizado.getProprietario().getId())
+                .orElseThrow(() ->
+                        new ResponseStatusException(
+                                HttpStatus.BAD_REQUEST, "Proprietário inexistente"));
+
+        Tipo tipo = tipoRepository
+                .findById(imovelAtualizado.getTipo().getId())
+                .orElseThrow(() ->
+                        new ResponseStatusException(
+                                HttpStatus.BAD_REQUEST, "Tipo inexistente"));
+
        Imovel imovel = imovelRepository
                 .findById(id)
                 .map( i -> {
@@ -111,6 +124,12 @@ public class ImovelController {
                     i.setQuintal(imovelAtualizado.getQuintal());
                     i.setFrente(imovelAtualizado.getFrente());
                     i.setTamanho(imovelAtualizado.getTamanho());
+                    System.out.println(i.getTipo());
+                    System.out.println(i.getProprietario());
+                    System.out.println(imovelAtualizado.getTipo());
+                    System.out.println(imovelAtualizado.getProprietario());
+                    i.setTipo(tipo);
+                    i.setProprietario(proprietario);
                     i.setExtra(imovelAtualizado.getExtra());
                     return imovelRepository.save(i);
                 })

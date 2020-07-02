@@ -47,7 +47,7 @@
 						<tr *ngFor="let imovel of imoveis | filter:filter; let i = index">
 							<td>{{ imovel.id }}</td>
 							<td>{{ imovel.titulo }}</td>
-							<td class="full">{{ imovel.descricao }}</td>
+							<td class="full"><small>{{ imovel.descricao }}</small></td>
               <td>{{ imovel.endereco.bairro }}</td>
               <td class="full">{{ imovel.tipo.nome }}</td>
               <td class="full">{{ imovel.proprietario.nome }}</td>
