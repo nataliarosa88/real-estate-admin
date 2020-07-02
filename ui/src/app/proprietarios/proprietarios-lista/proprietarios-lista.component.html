@@ -24,7 +24,7 @@
 	</div>
 	<br />
 	<nav class="navbar">
-		<input class="form-control" type="text" name="search" [(ngModel)]="filter">
+		<input class="form-control" type="text" name="search" [(ngModel)]="filter" placeholder="Digite sua busca aqui">
 	</nav>
 	<br />
 	<div class="row">
@@ -90,16 +90,17 @@
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
-				<div><h4>Consulta</h4></div>
+				<div><h4><i class="fa fa-users"></i> Consulta</h4></div>
 				<div><button class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i></button></div>
 			</div>
 			<div class="modal-body" *ngIf="proprietarioSelecionado">
 				<div class="rolagem">
-					<h3><b>{{ proprietarioSelecionado.nome }}</b></h3>
-					<p>Telefone: {{ proprietarioSelecionado.telefone }}</p>
-					<p>Email: {{ proprietarioSelecionado.email }}</p>
-					<p>Celular: {{ proprietarioSelecionado.celular }}</p>
-					<p>Data de Cadastro: {{ proprietarioSelecionado.dataCadastro }}</p>
+            <h3><b><i class="fa fa-users"></i> {{ proprietarioSelecionado.nome }}</b></h3>
+            <p><i class="fa fa-mobile"></i> Celular: {{ proprietarioSelecionado.celular }}</p>
+            <p><i class="fa fa-envelope"></i> Email: {{ proprietarioSelecionado.email }}</p>
+            <p><i class="fa fa-phone"></i> Telefone: {{ proprietarioSelecionado.telefone }}</p>
+            <p><i class="fa fa-search-dollar"></i> Interesse: {{ proprietarioSelecionado.interesse }}</p>
+            <p><i class="fa fa-calendar-alt"></i> Data de Cadastro: {{ proprietarioSelecionado.dataCadastro }}</p>
 			</div>
 			</div>
 			<div class="modal-footer">
